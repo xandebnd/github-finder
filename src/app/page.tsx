@@ -4,6 +4,7 @@ import { Footer } from "@/components/Footer";
 import { ProfileUser } from "@/components/ProfileUser";
 import { ArrowLeft } from "lucide-react";
 import { useState } from "react";
+import { FaSpinner } from "react-icons/fa";
 
 export default function Home() {
 	const [username, setUsername] = useState<string | null>(null);
@@ -72,7 +73,13 @@ export default function Home() {
 								disabled={loading}
 								className="bg-blue-600 text-white font-semibold py-2 rounded-lg hover:bg-blue-700 transition"
 							>
-								{loading ? "Buscando..." : "Buscar"}
+								{loading ? (
+									<span className="flex items-center gap-2 animate-pulse">
+										<FaSpinner className="animate-spin" /> Carregando...
+									</span>
+								) : (
+									"Buscar"
+								)}
 							</button>
 						</form>
 					</section>
